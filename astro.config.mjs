@@ -2,6 +2,8 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import starlightThemeObsidian from 'starlight-theme-obsidian'
+import robotsTxt from 'astro-robots-txt';
+import compressor from 'astro-compressor';
 
 // https://astro.build/config
 export default defineConfig({
@@ -42,7 +44,42 @@ export default defineConfig({
 					backlinks: true,
 					graph: false
 				}),
-			]
+			],
+			credits: true,
 		}),
+		robotsTxt({
+			sitemap: true,
+			policy: [
+				{
+					userAgent: '*',
+					allow: '/',
+					disallow: '/_astro/'
+				},
+				{
+					userAgent: 'GPTBot',
+					disallow: '/',
+				},
+				{
+					userAgent: 'ChatGPT-User',
+					disallow: '/',
+				},
+				{
+					userAgent: 'Google-Extended',
+					disallow: '/',
+				},
+				{
+					userAgent: 'CCBot',
+					disallow: '/',
+				},
+				{
+					userAgent: 'anthropic-ai',
+					disallow: '/',
+				}
+			],
+		}),
+		compressor({
+			brotli: true,
+			gzip: true,
+		})
 	],
 });
