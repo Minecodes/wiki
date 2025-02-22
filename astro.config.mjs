@@ -9,6 +9,17 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'MCDS Wiki',
+			defaultLocale: 'root',
+			locales: {
+				en: {
+					label: 'English',
+					lang: 'en',
+				},
+				de: {
+					label: 'Deutsch',
+					lang: 'de',
+				},
+			},
 			social: {
 				github: 'https://github.com/Minecodes',
 				mastodon: 'https://sueden.social/@Minecodes',
