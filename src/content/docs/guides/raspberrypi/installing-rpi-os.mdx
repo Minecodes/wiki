@@ -1,0 +1,46 @@
+---
+title: Install Raspberry Pi os on a Raspberry Pi
+description: Guide to install Raspberry Pi OS on a Raspberry Pi
+template: doc
+hero:
+  image:
+    file: ../../../../assets/rpiimager.png
+  actions:
+    - text: RPi Imager
+      link: https://www.raspberrypi.com/software/
+      icon: right-arrow
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+This guide works on any *official* Raspberry Pi. This guide uses the official RPi Imager!
+
+## Requirements
+ - a Raspberry Pi
+ - a SD Card, USB SSD or Flash Drive (that's where the OS is gonna be installed)
+ - (a reading device if needed)
+ - Raspberry Pi Imager on a Computer
+
+## Installation
+<Steps>
+1. Plug in your storage
+
+2. Open RPi Imager
+
+3. Select your Raspberry Pi model
+   ![Arrow pointing to the choose device button](../../../../assets/rpiimager-devices.png)
+
+4. Select one of the Raspberry Pi OS variants
+   ![Arrow pointing to the choose OS button](../../../../assets/rpiimager-osb.png)
+   ![Arrows pointing to Raspberry Pi OS variants](../../../../assets/rpiimager-oslist.png)
+
+5. Select your storage device
+   ![Arrow pointing to the choose storage button](../../../../assets/rpiimager-storage.png)
+
+6. Click next
+
+7. If you want to set predefined settings (keyboard, wifi, ssh, ...), you can edit here. Then just press "yes"
+   ![](../../../../assets/rpiimager-oscustom.png)
+
+8. After the flashing is done, you can start up your Pi, and use the setup wizard, if the OS variant needs it
+</Steps>

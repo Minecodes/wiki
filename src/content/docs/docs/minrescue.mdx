@@ -1,0 +1,102 @@
+---
+title: minrescue
+description: A small backup live distro built on the Arch Linux installer (archiso)
+template: doc
+hero:
+  tagline: A small backup live distro built on the Arch Linux installer (archiso)
+  actions:
+    - text: Github
+      link: https://github.com/Minecodes/minrescue
+      icon: right-arrow
+    - text: Releases
+      link: https://github.com/Minecodes/minrescue/releases
+      icon: right-arrow
+---
+
+import { Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+## Requirements
+### Normal Variant
+ - A USB stick with at least 2 GB of storage
+ - A computer with a 64-bit processor
+ - ~512 MB of RAM
+
+### Minimal Variant
+ - A USB stick with at least 1 GB of storage
+ - A computer with a 64-bit processor
+ - ~256 MB of RAM
+
+## Installation
+<Steps>
+
+1. Download the latest release from the [releases page](https://github.com/Minecodes/minrescue/releases)
+2. Write the ISO to a USB stick
+    <Tabs>
+        <TabItem label="Etcher">
+            1. Download and install [Etcher](https://www.balena.io/etcher/)
+            2. Open Etcher and select the downloaded ISO
+            3. Select the USB stick and click on "Flash"
+        </TabItem>
+        <TabItem label="dd">
+            1. Open a terminal
+            2. Run `lsblk` to find the USB stick
+            3. Run `sudo dd bs=4M if=/path/to/minrescue.iso of=/dev/sdX status=progress oflag=sync` (replace `/path/to/minrescue.iso` with the path to the downloaded ISO and `/dev/sdX` with the USB stick)
+        </TabItem>
+        <TabItem label="Rufus">
+            1. Download and install [Rufus](https://rufus.ie/)
+            2. Open Rufus and select the downloaded ISO
+            3. Select the USB stick and click on "Start"
+        </TabItem>
+        <TabItem label="Ventoy">
+            1. Install [Ventoy](https://www.ventoy.net/en/index.html) on the USB stick
+            2. Copy the downloaded ISO to the USB stick
+        </TabItem>
+    </Tabs>
+
+</Steps>
+
+## Usage
+<Steps>
+
+1. Boot from the USB stick
+2. Plugin a second USB stick or an external hard drive to store your data
+3. Mount the device
+    1. Run `lsblk` to find the device
+    2. Run `mount /dev/sdX /mnt` (replace `/dev/sdX` with the device)
+4. Backup your data
+    1. Change directory into `/mnt`: `cd /mnt`
+    2. Run `minbk` to start the backup process
+
+</Steps>
+
+## Build
+
+<Tabs>
+  <TabItem label="VM/PC">
+    <Steps>
+      1. Clone the repository
+      2. Run `./install_dependencies.sh`
+      3. Run `./build.sh` (this will take a while and use 100% of the CPU, because mkarchiso is defaulting to that)
+      4. Copy/Use the ISO file in `dist/`
+    </Steps>
+  </TabItem>
+
+  <TabItem label="Container">
+    <Steps>
+      1. Clone the repository
+      2. Run `docker run -it --privileged --rm -v ".:/mnt/" archlinux bash` (the privileged flag is needed for mkarchiso)
+      3. Run `cd /mnt/`
+      4. Run `./install_dependencies.sh`
+      5. Run `./build.sh` (this will take a while and use 100% of the CPU, because mkarchiso is defaulting to that)
+      6. Close your container
+      7. Copy/Use the ISO file in `dist/`
+    </Steps>
+  </TabItem>
+
+  <TabItem label="GitHub Actions">
+    <Steps>
+      1. Fork the repository
+      2. Make a new commit or tag
+    </Steps>
+  </TabItem>
+</Tabs>
