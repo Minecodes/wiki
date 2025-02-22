@@ -5,6 +5,7 @@ import starlightThemeObsidian from 'starlight-theme-obsidian'
 
 // https://astro.build/config
 export default defineConfig({
+	site: 'https://docs.mcds.moe',
 	integrations: [
 		starlight({
 			title: 'MCDS Wiki',
