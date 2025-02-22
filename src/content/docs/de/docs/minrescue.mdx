@@ -1,0 +1,102 @@
+---
+title: minrescue
+description: Eine kleine Backup-Live-Distribution, die auf dem Arch Linux-Installer (archiso) basiert
+template: doc
+hero:
+  tagline: Eine kleine Backup-Live-Distribution, die auf dem Arch Linux-Installer (archiso) basiert
+  actions:
+    - text: Github
+      link: https://github.com/Minecodes/minrescue
+      icon: right-arrow
+    - text: Releases
+      link: https://github.com/Minecodes/minrescue/releases
+      icon: right-arrow
+---
+
+import { Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+## Anforderungen
+### Normale Variante
+ - Ein USB-Stick mit mindestens 2 GB Speicherplatz
+ - Ein Computer mit einem 64-Bit-Prozessor
+ - ~512 MB Arbeitsspeicher
+
+### Minimale Variante
+ - Ein USB-Stick mit mindestens 1 GB Speicherplatz
+ - Ein Computer mit einem 64-Bit-Prozessor
+ - ~256 MB Arbeitsspeicher
+
+## Installation
+<Steps>
+
+1. Lade die neuste Version von der [Download Seite](https://github.com/Minecodes/minrescue/releases) herunter
+2. Schreibe die ISO Datei auf einen USB-Stick
+    <Tabs>
+        <TabItem label="Etcher">
+            1. Lade und installiere [Etcher](https://www.balena.io/etcher/)
+            2. Öffne Etcher und wähle die heruntergeladene ISO Datei aus
+            3. Wähle nun den USB-Stick aus und klicke auf "Flash"
+        </TabItem>
+        <TabItem label="dd">
+            1. Öffne ein Terminal
+            2. Führe `lsblk` aus, um den USB-Stick zu finden
+            3. Führe `sudo dd bs=4M if=/Pfad/zur/minrescue.iso of=/dev/sdX status=progress oflag=sync` (ersetze `/Pfad/zur/minrescue.iso` mit dem Pfad zur heruntergeladenen ISO Datein und `/dev/sdX` mit dem USB-Stick)
+        </TabItem>
+        <TabItem label="Rufus">
+            1. Lade [Rufus](https://rufus.ie/) herunter und installiere es
+            2. Öffne Rufus und wähle die heruntergeladene ISO Datei aus
+            3. Nun wähle den USB-Stick aus und klicke auf "Start"
+        </TabItem>
+        <TabItem label="Ventoy">
+            1. Installiere [Ventoy](https://www.ventoy.net/en/index.html) auf einem USB-Stick
+            2. Kopiere die Datei in das Ventoy Laufwerk
+        </TabItem>
+    </Tabs>
+
+</Steps>
+
+## Verwendung
+<Steps>
+
+1. Starte deinen Computer von dem USB-Stick
+2. Schließe einen zweiten USB-Stick oder eine externe Festplatte an, um deine Daten zu speichern
+3. Hänge das Gerät ein
+    1. Führe `lsblk` aus, um das Gerät zu finden
+    2. Führe `mount /dev/sdX /mnt` aus (ersetze `/dev/sdX` mit dem Gerät)
+4. Sichere deine Daten
+    1. Wechsle in das Verzeichnis `/mnt`: `cd /mnt`
+    2. Führe `minbk` aus, um den Backup-Prozess zu starten
+
+</Steps>
+
+## Bauen der ISO
+
+<Tabs>
+  <TabItem label="VM/PC">
+    <Steps>
+      1. Klone das Repository
+      2. Führe `./install_dependencies.sh` aus
+      3. Führe `./build.sh` aus (dies wird eine Weile dauern und 100% der CPU nutzen, da mkarchiso standardmäßig so eingestellt ist)
+      4. Kopiere/Verwende die ISO-Datei in `dist/`
+    </Steps>
+  </TabItem>
+
+  <TabItem label="Container">
+    <Steps>
+      1. Klone das Repository
+      2. Führe `docker run -it --privileged --rm -v ".:/mnt/" archlinux bash` aus (der privileged Flag wird für mkarchiso benötigt)
+      3. Führe `cd /mnt/` aus
+      4. Führe `./install_dependencies.sh` aus
+      5. Führe `./build.sh` aus (dies wird eine Weile dauern und 100% der CPU nutzen, da mkarchiso standardmäßig so eingestellt ist)
+      6. Schließe deinen Container
+      7. Kopiere/Verwende die ISO-Datei in `dist/`
+    </Steps>
+  </TabItem>
+
+  <TabItem label="GitHub Actions">
+    <Steps>
+      1. Forke das Repository
+      2. Erstelle einen neuen Commit oder Tag
+    </Steps>
+  </TabItem>
+</Tabs>

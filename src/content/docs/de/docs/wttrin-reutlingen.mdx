@@ -1,0 +1,101 @@
+---
+title: WttrIn Reutlingen
+description: Ein Bluesky Bot, der jeden Tag ihnen das Wetter in Reutlingen um 7:00 Uhr postet
+template: doc
+hero:
+  tagline: Ein Bluesky Bot, der jeden Tag ihnen das Wetter in Reutlingen um 7:00 Uhr postet
+  image:
+    file: ../../../assets/wttrin-rt-bsky.png
+  actions:
+    - text: Github
+      link: https://github.com/Minecodes/WttrIn-Reutlingen
+      icon: right-arrow
+    - text: Bluesky
+      link: https://bsky.app/profile/wttrin-reutlingen.bsky.social
+      icon: right-arrow
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+## Einrichtung
+<Steps>
+
+1. Voraussetzungen
+    - Ein Bluesky-Konto für den Bot
+    - bunjs auf deinem Computer installiert
+
+2. Repository klonen
+    ```bash
+    git clone https://github.com/Minecodes/WttrIn-Reutlingen
+    ```
+
+3. Abhängigkeiten installieren
+    ```bash
+    bun install
+    ```
+
+4. Erstelle eine `.env` Datei im Hauptverzeichnis des Projekts und füge folgenden Inhalt hinzu
+    ```env
+    BSKY_USERNAME=benutzername.bsky.network
+    BSKY_PASSWORD=passwort
+    BOT_CITY=Reutlingen
+    ```
+    Ersetze `benutzername.bsky.network` und `passwort` mit deinen Bluesky-Zugangsdaten
+
+5. Bot starten
+    - Mit bun
+        ```bash
+        bun start
+        ```
+    
+    - Mit Docker Compose
+        ```bash
+        docker compose up -d
+        ```
+
+</Steps>
+
+## Lizensen
+
+<Steps>
+
+1. Eigenlizenz
+    ```plaintext
+    BSD 3-Clause License
+
+    Copyright (c) 2024, Minecodes <contact@minecodes.de>
+
+    Redistribution and use in source and binary forms, with or without
+    modification, are permitted provided that the following conditions are met:
+
+    1. Redistributions of source code must retain the above copyright notice, this
+       list of conditions and the following disclaimer.
+
+    2. Redistributions in binary form must reproduce the above copyright notice,
+       this list of conditions and the following disclaimer in the documentation
+       and/or other materials provided with the distribution.
+
+    3. Neither the name of the copyright holder nor the names of its
+       contributors may be used to endorse or promote products derived from
+       this software without specific prior written permission.
+
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+    AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+    IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+    DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+    FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+    DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+    SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+    CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+    OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+    OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    ```
+
+2. Drittanbieterlizenzen
+    - [wttr.in](https://github.com/chubin/wttr.in/blob/master/LICENSE) is licensed under the Apache License 2.0
+    - [dotenv](https://github.com/motdotla/dotenv/blob/master/LICENSE) is licensed under the BSD 2-Clause License
+    - [node-cron](https://github.com/kelektiv/node-cron/blob/main/LICENSE) is licensed under the MIT License
+    - [@skyware/bot](https://github.com/skyware-js/bot/blob/main/LICENSE) is licensed under the Mozilla Public License 2.0
+    - [bun](https://github.com/oven-sh/bun/blob/main/LICENSE.md) is licensed under the MIT License
+
+</Steps>
