@@ -8,6 +8,10 @@ import compressor from 'astro-compressor';
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://docs.mcds.moe',
+	prefetch: {
+		defaultStrategy: 'load',
+		prefetchAll: true,
+	},
 	integrations: [
 		starlight({
 			title: 'MCDS Wiki',
