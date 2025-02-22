@@ -9,7 +9,6 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'MCDS Wiki',
-			defaultLocale: 'root',
 			locales: {
 				en: {
 					label: 'English',
